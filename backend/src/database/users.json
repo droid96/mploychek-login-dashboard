@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "admin123",
+    "role": "Admin"
+  },
+  {
+    "id": 2,
+    "username": "user",
+    "password": "user123",
+    "role": "General User"
+  },
+  {
+    "id": 1779821372885,
+    "username": "sanjay",
+    "password": "sanjay",
+    "role": "Admin"
+  },
+  {
+    "id": 1779825717282,
+    "username": "sanjay1",
+    "password": "sanjay",
+    "role": "Admin"
+  },
+  {
+    "id": 1779825738097,
+    "username": "sanjay2",
+    "password": "sanjay",
+    "role": "General User"
+  },
+  {
+    "id": 1779825778023,
+    "username": "hr1",
+    "password": "hr123",
+    "role": "Admin"
+  },
+  {
+    "id": 1779919477627,
+    "username": "Manager",
+    "password": "manager123",
+    "role": "General User"
+  },
+  {
+    "id": 1779919507599,
+    "username": "SDE2",
+    "password": "SDE123",
+    "role": "General User"
+  },
+  {
+    "id": 1779919877724,
+    "username": "QA1",
+    "password": "QA123",
+    "role": "Admin"
+  },
+  {
+    "id": 1779919899177,
+    "username": "QA2",
+    "password": "qa123",
+    "role": "General User"
+  },
+  {
+    "id": 1779919943158,
+    "username": "SDE1",
+    "password": "SDE!@#",
+    "role": "General User"
+  },
+  {
+    "id": 1779919979332,
+    "username": "Network Admin",
+    "password": "net123",
+    "role": "Admin"
+  },
+  {
+    "id": 1779920005537,
+    "username": "CEO",
+    "password": "CEO123",
+    "role": "General User"
+  },
+  {
+    "id": 1779920032281,
+    "username": "CFO",
+    "password": "CF)123",
+    "role": "General User"
+  },
+  {
+    "id": 1779920091151,
+    "username": "COO",
+    "password": "COO123",
+    "role": "General User"
+  }
+]

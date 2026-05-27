@@ -1,0 +1,61 @@
+
+NSQTECH FULL STACK ASSIGNMENT IMPLEMENTATION GUIDE
+
+=====================
+BACKEND SETUP
+=====================
+
+1. Open terminal
+2. Navigate to backend folder
+
+cd backend
+
+3. Install dependencies
+
+npm install
+
+4. Run backend
+
+npm run dev
+
+Backend runs on:
+http://localhost:5000
+
+=====================
+FRONTEND SETUP
+=====================
+
+1. Install Angular CLI
+
+npm install -g @angular/cli
+
+2. Open another terminal
+
+3. Navigate to frontend folder
+
+cd frontend
+
+4. Install dependencies
+
+npm install
+
+5. Run frontend
+
+ng serve
+
+Frontend runs on:
+http://localhost:4200
+
+=====================
+LOGIN CREDENTIALS
+=====================
+
+Admin:
+username: admin
+password: admin123
+role: Admin
+
+General User:
+username: user
+password: user123
+role: General User
