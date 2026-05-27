@@ -180,7 +180,7 @@ user123
 
 ![Dashboard](screenshots/dashboard.png)
 
-![Analytics](screenshots/user_added.png)
+![Dashbaord](screenshots/user_added.png)
 
 ---
 
