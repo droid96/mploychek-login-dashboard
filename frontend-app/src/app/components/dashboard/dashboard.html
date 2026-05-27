@@ -1,0 +1,253 @@
+<!-- ============================================
+     DASHBOARD — MPloyChek
+     Premium Admin Dashboard
+     ============================================ -->
+
+<div class="dashboard-container">
+
+  <!-- SIDEBAR -->
+  <app-sidebar
+    [sidebarOpen]="sidebarOpen"
+    [userCount]="users.length"
+    (closeSidebar)="toggleSidebar()">
+  </app-sidebar>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- NAVBAR -->
+    <app-navbar (menuToggle)="toggleSidebar()"></app-navbar>
+
+    <!-- CONTENT -->
+    <div class="dashboard-content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div class="welcome-block">
+          <h1>Hello, <span>{{ currentUser?.username || 'User' }}</span> 👋</h1>
+          <p>Here's what's happening in your workspace today.</p>
+        </div>
+        <div class="header-date">{{ today | date:'EEEE, MMMM d, y' }}</div>
+      </div>
+
+      <!-- STATS GRID -->
+      <div class="stats-grid">
+
+        <!-- TOTAL USERS -->
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon-wrap stat-icon-orange">
+              <i class="fas fa-users"></i>
+            </div>
+            <span class="stat-trend trend-up">
+              <i class="fas fa-arrow-trend-up"></i>+12%
+            </span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Total Users</div>
+            <div class="stat-value">{{ users.length }}</div>
+          </div>
+        </div>
+
+        <!-- ADMINS -->
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon-wrap stat-icon-blue">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <span class="stat-trend trend-flat">
+              <i class="fas fa-minus"></i>Stable
+            </span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Admins</div>
+            <div class="stat-value">{{ users.filter(u => u.role === 'Admin').length }}</div>
+          </div>
+        </div>
+
+        <!-- GENERAL USERS -->
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon-wrap stat-icon-green">
+              <i class="fas fa-user-check"></i>
+            </div>
+            <span class="stat-trend trend-up">
+              <i class="fas fa-arrow-trend-up"></i>+8%
+            </span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">General Users</div>
+            <div class="stat-value">{{ users.filter(u => u.role === 'General User').length }}</div>
+          </div>
+        </div>
+
+        <!-- CHART CARD -->
+        <div class="stat-card stat-card-chart">
+          <app-charts [users]="users"></app-charts>
+        </div>
+
+      </div>
+
+
+      <!-- ADMIN PANEL -->
+      <div class="admin-panel" *ngIf="isAdmin">
+
+        <div class="panel-header">
+          <h2>
+            <i class="fas fa-sliders"></i>
+            {{ editingUserId ? 'Edit User' : 'Add New User' }}
+          </h2>
+        </div>
+
+        <div class="add-user-form">
+
+          <!-- USERNAME -->
+          <div class="form-field">
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              [(ngModel)]="newUser.username" />
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-field">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter password"
+              [(ngModel)]="newUser.password" />
+          </div>
+
+          <!-- ROLE -->
+          <div class="form-field">
+            <label>Role</label>
+            <select [(ngModel)]="newUser.role">
+              <option>General User</option>
+              <option>Admin</option>
+            </select>
+          </div>
+
+          <!-- ACTION BUTTON -->
+          <div class="form-field">
+            <label>&nbsp;</label>
+            <button
+              class="btn-add"
+              [ngClass]="{ 'update': editingUserId }"
+              (click)="editingUserId ? updateUser() : addUser()">
+              <i class="fas" [ngClass]="editingUserId ? 'fa-floppy-disk' : 'fa-plus'"></i>
+              {{ editingUserId ? 'Update' : 'Add User' }}
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- TABLE SECTION -->
+      <div class="table-section">
+
+        <!-- TABLE HEADER -->
+        <div class="table-header">
+          <div>
+            <div class="table-title">User Management</div>
+            <div class="table-meta">{{ filteredUsers.length }} users found</div>
+          </div>
+          <div class="search-wrapper">
+            <i class="fas fa-magnifying-glass search-icon"></i>
+            <input
+              class="search-input"
+              type="text"
+              placeholder="Search users..."
+              [(ngModel)]="searchText"
+              (input)="filterUsers()" />
+          </div>
+        </div>
+
+        <!-- LOADING -->
+        <div class="spinner-container" *ngIf="loading">
+          <div class="spinner-icon"></div>
+          <p>Loading users...</p>
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div class="empty-state" *ngIf="!loading && filteredUsers.length === 0">
+          <div class="empty-icon"><i class="fas fa-users-slash"></i></div>
+          <h3>No Users Found</h3>
+          <p>Try adjusting your search or add a new user above.</p>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-wrap" *ngIf="!loading && filteredUsers.length > 0">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th *ngIf="isAdmin">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of paginatedUsers">
+
+                <td>{{ user.id }}</td>
+
+                <td>
+                  <div class="user-cell">
+                    <div class="user-cell-avatar">
+                      {{ user.username.charAt(0).toUpperCase() }}
+                    </div>
+                    <span class="user-cell-name">{{ user.username }}</span>
+                  </div>
+                </td>
+
+                <td>
+                  <span [ngClass]="user.role === 'Admin' ? 'admin-badge' : 'user-badge'">
+                    <i class="fas" [ngClass]="user.role === 'Admin' ? 'fa-crown' : 'fa-user'"></i>
+                    {{ user.role }}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="status-badge">
+                    <span class="status-dot"></span>
+                    Active
+                  </span>
+                </td>
+
+                <td *ngIf="isAdmin">
+                  <div class="action-btns">
+                    <button class="btn-edit" (click)="editUser(user)">
+                      <i class="fas fa-pen"></i> Edit
+                    </button>
+                    <button class="btn-delete" (click)="deleteUser(user.id)">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </div>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination" *ngIf="!loading && filteredUsers.length > 0">
+          <button class="btn-page" (click)="previousPage()" [disabled]="currentPage === 1">
+            <i class="fas fa-chevron-left"></i> Prev
+          </button>
+          <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button class="btn-page" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= filteredUsers.length">
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,79 @@
+<!-- ============================================
+     SIDEBAR — MPloyChek Navigation
+     Overlay closes on outside touch/click only
+============================================ -->
+
+<!-- MOBILE OVERLAY: sits behind sidebar, closes when tapped outside -->
+<div
+  class="sidebar-overlay"
+  *ngIf="isMobile && sidebarOpen"
+  (click)="onOverlayClick()"
+  (touchend)="onOverlayClick()">
+</div>
+
+<!-- SIDEBAR PANEL -->
+<aside
+  class="sidebar"
+  [ngClass]="{ 'sidebar-collapsed': !sidebarOpen }">
+
+  <!-- LOGO -->
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">
+      <i class="fas fa-shield-alt"></i>
+    </div>
+    <span class="sidebar-logo-text">MPloy<span>Chek</span></span>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="sidebar-nav">
+
+    <div class="nav-section-label">Main Menu</div>
+
+    <!-- DASHBOARD -->
+    <div class="nav-item active">
+      <div class="nav-icon"><i class="fas fa-gauge-high"></i></div>
+      <span class="nav-label">Dashboard</span>
+    </div>
+
+    <!-- USERS -->
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-users"></i></div>
+      <span class="nav-label">Users</span>
+      <span class="nav-badge">{{ userCount }}</span>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-chart-line"></i></div>
+      <span class="nav-label">Analytics</span>
+    </div>
+
+    <div class="nav-section-label">System</div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-bell"></i></div>
+      <span class="nav-label">Notifications</span>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="nav-item">
+      <div class="nav-icon"><i class="fas fa-gear"></i></div>
+      <span class="nav-label">Settings</span>
+    </div>
+
+  </nav>
+
+  <!-- FOOTER -->
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="user-avatar">{{ userInitial }}</div>
+      <div class="user-info">
+        <div class="user-name">{{ userName }}</div>
+        <div class="user-role">{{ userRole }}</div>
+      </div>
+      <i class="fas fa-ellipsis-vertical user-chevron"></i>
+    </div>
+  </div>
+
+</aside>

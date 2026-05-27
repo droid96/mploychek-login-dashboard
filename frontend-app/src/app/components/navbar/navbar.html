@@ -1,0 +1,56 @@
+<!-- ============================================
+  NAVBAR — MPloyChek Top Bar
+  ============================================ -->
+
+<header class="navbar">
+
+  <!-- LEFT -->
+  <div class="navbar-left">
+
+    <!-- HAMBURGER -->
+    <button class="menu-btn" (click)="toggleMenu()" aria-label="Toggle sidebar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- BREADCRUMB -->
+    <div class="navbar-breadcrumb">
+      <span>MPloyChek</span>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">Dashboard</span>
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="navbar-right">
+
+    <!-- THEME TOGGLE -->
+    <button class="nav-icon-btn theme-btn" (click)="toggleTheme()" [title]="isDarkMode ? 'Light mode' : 'Dark mode'">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+
+    <!-- NOTIFICATIONS -->
+    <button class="nav-icon-btn" title="Notifications">
+      <i class="fas fa-bell"></i>
+      <span class="notif-dot"></span>
+    </button>
+
+    <div class="navbar-divider"></div>
+
+    <!-- USER CHIP -->
+    <div class="navbar-user">
+      <div class="navbar-avatar">{{ userInitial }}</div>
+      <span class="navbar-username">{{ userName }}</span>
+    </div>
+
+    <!-- LOGOUT -->
+    <button class="logout-btn" (click)="logout()">
+      <i class="fas fa-arrow-right-from-bracket"></i>
+      Logout
+    </button>
+
+  </div>
+
+</header>

@@ -1,0 +1,105 @@
+<!-- ============================================
+     LOGIN PAGE — MPloyChek
+     Premium Glassmorphism Design
+     ============================================ -->
+
+<div class="login-page" [class.dark-mode]="isDarkMode">
+
+  <!-- BACKGROUND LAYERS -->
+  <div class="login-bg"></div>
+  <div class="login-grid"></div>
+  <div class="login-orb login-orb-1"></div>
+  <div class="login-orb login-orb-2"></div>
+  <div class="login-orb login-orb-3"></div>
+
+  <!-- THEME TOGGLE -->
+  <div class="theme-toggle">
+    <button class="theme-toggle-btn" (click)="toggleTheme()" [title]="isDarkMode ? 'Switch to Light' : 'Switch to Dark'">
+      <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+  </div>
+
+  <!-- LOGIN CARD -->
+  <div class="login-card">
+
+    <!-- LOGO -->
+    <div class="logo-section">
+      <div class="logo-badge">
+        <div class="logo-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <span class="logo-name">MPloy<span>Chek</span></span>
+      </div>
+      <p class="logo-tagline">Smart Verification Platform</p>
+    </div>
+
+    <!-- HEADER -->
+    <div class="login-header">
+      <h2>Welcome back</h2>
+      <p>Sign in to your account to continue</p>
+    </div>
+
+    <!-- USERNAME -->
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <div class="input-wrapper">
+        <i class="fas fa-user input-icon"></i>
+        <input
+          class="form-input"
+          type="text"
+          placeholder="Enter your username"
+          [(ngModel)]="user.username"
+          (keyup.enter)="login()" />
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <div class="input-wrapper">
+        <i class="fas fa-lock input-icon"></i>
+        <input
+          class="form-input"
+          [type]="hidePassword ? 'password' : 'text'"
+          placeholder="Enter your password"
+          [(ngModel)]="user.password"
+          (keyup.enter)="login()" />
+        <button class="pw-toggle" type="button" (click)="hidePassword = !hidePassword" tabindex="-1">
+          <i class="fas" [ngClass]="hidePassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ROLE -->
+    <div class="form-group">
+      <label class="form-label">Role</label>
+      <div class="input-wrapper">
+        <i class="fas fa-id-badge input-icon"></i>
+        <select class="form-select" [(ngModel)]="user.role">
+          <option value="General User">General User</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <i class="fas fa-chevron-down select-arrow"></i>
+      </div>
+    </div>
+
+    <!-- LOGIN BUTTON -->
+    <button class="login-btn" (click)="login()" [disabled]="loading">
+      <span class="login-btn-inner" *ngIf="!loading">
+        <i class="fas fa-arrow-right-to-bracket"></i>
+        Sign In
+      </span>
+      <span class="login-btn-inner" *ngIf="loading">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        Authenticating...
+      </span>
+    </button>
+
+    <!-- FOOTER -->
+    <div class="login-divider">
+      Designed by Manoharan &copy; 2026
+    </div>
+
+  </div>
+
+</div>

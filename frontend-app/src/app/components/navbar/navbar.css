@@ -1,0 +1,212 @@
+/* ============================================
+   NAVBAR — Top Bar
+   ============================================ */
+
+.navbar {
+  height: 68px;
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: var(--navbar-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  transition:
+    background var(--duration-slow) var(--ease-out),
+    border-color var(--duration-slow) var(--ease-out);
+}
+
+/* ── Left Side ── */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  flex-shrink: 0;
+}
+
+.menu-btn:hover {
+  background: var(--bg-base);
+  border-color: var(--brand-500);
+}
+
+.menu-btn span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-base),
+    width var(--duration-base);
+}
+
+.menu-btn:hover span { background: var(--brand-500); }
+
+.navbar-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.navbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.breadcrumb-sep {
+  color: var(--border-default);
+}
+
+.breadcrumb-current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── Right Side ── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Icon buttons */
+.nav-icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all var(--duration-fast);
+  position: relative;
+}
+
+.nav-icon-btn:hover {
+  color: var(--brand-500);
+  border-color: var(--brand-500);
+  background: var(--bg-base);
+}
+
+/* Notification dot */
+.notif-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  background: var(--brand-500);
+  border-radius: 50%;
+  border: 2px solid var(--navbar-bg);
+  animation: notif-pulse 2s ease-in-out infinite;
+}
+
+@keyframes notif-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,0,0.4); }
+  50%       { box-shadow: 0 0 0 5px rgba(255,107,0,0); }
+}
+
+/* Theme toggle in navbar */
+.theme-btn {
+  position: relative;
+}
+
+/* Divider */
+.navbar-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-default);
+  margin: 0 4px;
+}
+
+/* Logout button */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  background: transparent;
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all var(--duration-fast);
+}
+
+.logout-btn:hover {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+/* User chip */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: default;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-500), var(--brand-400));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+
+.navbar-username {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .navbar-breadcrumb,
+  .navbar-username { display: none; }
+  .navbar { padding: 0 16px; }
+}
