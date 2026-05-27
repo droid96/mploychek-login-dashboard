@@ -1,4 +1,4 @@
-# MPloyChek Admin Dashboard
+# MPloyChek Login & Dashboard
 
 A modern full-stack Angular + Node.js admin dashboard built for the NSQTech Software Engineer Internship Assignment.
 
@@ -180,17 +180,17 @@ user123
 
 ![Dashboard](screenshots/dashboard.png)
 
----
-
-## Mobile Responsive Sidebar
-
-![Mobile View](screenshots/mobile-view.png)
+![Analytics](screenshots/user_added.png)
 
 ---
 
-## Analytics Dashboard
+## Mobile Responsive 
 
-![Analytics](screenshots/charts.png)
+![Mobile View](screenshots/mobile_login.png)
+
+![Mobile View](screenshots/mobile_dashboard.png)
+
+![Mobile View](screenshots/mobile_sidebar.png)
 
 ---
 
