@@ -174,11 +174,15 @@ user123
 
 ![Login](Screenshots/login.png)
 
+![Login](Screenshots/login_dark.png)
+
 ---
 
 ## Dashboard
 
 ![Dashboard](Screenshots/dashboard.png)
+
+![Dashboard](Screenshots/dashboard_dark.png)
 
 ![Dashbaord](Screenshots/user_added.png)
 
