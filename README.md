@@ -172,25 +172,25 @@ user123
 
 ## Login Page
 
-![Login](screenshots/login.png)
+![Login](Screenshots/login.png)
 
 ---
 
 ## Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots/dashboard.png)
 
-![Dashbaord](screenshots/user_added.png)
+![Dashbaord](Screenshots/user_added.png)
 
 ---
 
 ## Mobile Responsive 
 
-![Mobile View](screenshots/mobile_login.png)
+![Mobile View](Screenshots/mobile_login.png)
 
-![Mobile View](screenshots/mobile_dashboard.png)
+![Mobile View](Screenshots/mobile_dashboard.png)
 
-![Mobile View](screenshots/mobile_sidebar.png)
+![Mobile View](Screenshots/mobile_sidebar.png)
 
 ---
 
